@@ -1,16 +1,14 @@
 services:
-  node:
+  cervus-min:
     image: "node:17-alpine"
     user: "node"
-    working_dir: /home/node/app
-    expose:
-      - 8080
+    working_dir: /home/cervus-min/app
+    ports:
+      - "8080:8080"
     env_file:
-      - .env
+      - app/.env
     environment:
       - NODE_ENV=developement
     volumes:
-      - ./:/home/node/app
-    expose:volumes:
-      - "8081"
-    command: "npm start"
+      - ./:/home/cervus-min
+    command: "npm run start"
